@@ -75,7 +75,7 @@
             if(index === 0) div.classList.add('active');
             div.classList.add('carousel-item', 'vh-100');
             div.style.backgroundImage = `url('/assets/images/carousel/${filename}')`;
-            document.querySelector('carousel-inner').appendChild(div);
+            document.querySelector('.carousel-inner').appendChild(div);
           });
         })
         .catch(err => console.error(err));
