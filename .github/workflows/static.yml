@@ -31,6 +31,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Generate carousel.json
+        run: |
+          IMAGES_DIR="assets/images/carousel"
+          OUTPUT_FILE="carousel.json"
+          echo "[" > $OUTPUT_FILE
+          find "$IMAGES_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" -o -iname "*.svg" \) \
+            | sed 's/^/  "/; s/$/"/' | paste -sd "," - >> $OUTPUT_FILE
+          echo "]" >> $OUTPUT_FILE
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
