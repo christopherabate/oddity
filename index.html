@@ -76,6 +76,11 @@
             div.classList.add('carousel-item', 'vh-100');
             div.style.backgroundImage = `url('/assets/images/carousel/${filename}')`;
             document.querySelector('.carousel-inner').appendChild(div);
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = `/assets/images/carousel/${filename}`;
+            link.as = 'image';
+            document.head.appendChild(link);
           });
         })
         .catch(err => console.error(err));
