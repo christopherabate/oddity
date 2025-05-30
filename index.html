@@ -20,19 +20,19 @@
         min-height: 100vh;
       }
       .carousel {
-        mask: url('assets/images/mask-sm.svg');
-        -webkit-mask: url('assets/images/mask-sm.svg');
+        mask: url('assets/images/mask-sm.svg') center/cover no-repeat;
+        -webkit-mask: url('assets/images/mask-sm.svg') center/cover no-repeat;
       }
       @media (min-width: 768px) {
         .carousel {
-          mask: url('assets/images/mask.svg');
-          -webkit-mask: url('assets/images/mask.svg');
+          mask: url('assets/images/mask.svg') center/cover no-repeat;
+          -webkit-mask: url('assets/images/mask.svg') center/cover no-repeat;
         }
       }
       .carousel .carousel-item {
         background-position: center;
-        background-repeat: no-repeat;
         background-size: cover;
+        background-repeat: no-repeat;
       }
     </style>
   </head>
