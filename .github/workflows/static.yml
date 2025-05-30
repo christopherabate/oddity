@@ -36,9 +36,16 @@ jobs:
           IMAGES_DIR="assets/images/carousel"
           OUTPUT_FILE="carousel.json"
           echo "[" > $OUTPUT_FILE
-          find "$IMAGES_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" -o -iname "*.svg" \) \
-            -exec basename {} \; \
-            | sed 's/^/    "/; s/$/"/' | paste -sd ",\n" - >> $OUTPUT_FILE
+          files=($(find "$IMAGES_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" -o -iname "*.svg" \) -exec basename {} \;))
+          length=${#files[@]}
+          for ((i=0; i<length; i++)); do
+            echo -n "  \"${files[i]}\"" >> $OUTPUT_FILE
+            if [ $i -lt $((length - 1)) ]; then
+              echo "," >> $OUTPUT_FILE
+            else
+              echo "" >> $OUTPUT_FILE
+            fi
+          done
           echo "]" >> $OUTPUT_FILE
       - name: Setup Pages
         uses: actions/configure-pages@v5
