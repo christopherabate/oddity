@@ -71,13 +71,13 @@
         .then(response => response.json())
         .then(items => {
           items.forEach((filename, index) => {
+            const img = new Image();
+            img.src = `/assets/images/carousel/${filename}`;
             const div = document.createElement('div');
             if(index === 0) div.classList.add('active');
             div.classList.add('carousel-item', 'vh-100');
             div.style.backgroundImage = `url('/assets/images/carousel/${filename}')`;
             document.querySelector('.carousel-inner').appendChild(div);
-            const img = new Image();
-            img.src = `/assets/images/carousel/${filename}`;
           });
         })
         .catch(err => console.error(err));
