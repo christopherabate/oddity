@@ -19,26 +19,32 @@
       section {
         scroll-snap-align: start end;
       }
-      .carousel {
-        mask: url('assets/images/mask-sm.svg') center/cover no-repeat;
-        -webkit-mask: url('assets/images/mask-sm.svg') center/cover no-repeat;
+      #mask {
+        mask: url('./assets/images/mask-sm.svg') center/cover no-repeat;
+        -webkit-mask: url('./assets/images/mask-sm.svg') center/cover no-repeat;
       }
       @media (min-width: 576px) {
-        .carousel {
-          mask: url('assets/images/mask.svg') center/cover no-repeat;
-          -webkit-mask: url('assets/images/mask.svg') center/cover no-repeat;
+        #mask {
+          mask: url('./assets/images/mask.svg') center/cover no-repeat;
+          -webkit-mask: url('./assets/images/mask.svg') center/cover no-repeat;
         }
       }
-      .carousel .carousel-item {
+      #mask .carousel-item {
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
+      }
+      .frame {
+        border: 1rem solid black;
+        padding: 5%;
+        box-shadow: 0px 10px 13px -7px black, 5px 5px 15px 5px transparent;
+        -webkit-box-shadow: 0px 10px 13px -7px black, 5px 5px 15px 5px transparent); 
       }
     </style>
   </head>
   <body>
     <main role="main">
-      <section class="carousel slide vh-100" data-bs-ride="carousel" data-bs-pause="false">
+      <section id="mask" class="carousel slide vh-100" data-bs-ride="carousel" data-bs-pause="false">
         <h1 class="visually-hidden">Oddity - Salon atypique pour esprits libres</h1>
         <div aria-hidden="true" class="carousel-inner"></div>
       </section>
@@ -55,8 +61,14 @@
       </section>
       <section class="bg-light text-dark py-5">
         <div class="container py-5">
-          <h2 class="text-uppercase"><i class="bi bi-piggy-bank"></i> Des tarifs inclusifs</h2>
-          <p class="lead">Chez Oddity, pas de tarif genré.<br />Nous avons fait le choix de baser nos prix sur la technique utilisée et le temps passé, pour être au plus juste et respecter chaque personne, quel que soit son genre ou son style.</p>
+          <div class="row">
+            <div class="col">
+            </div>
+            <div class="col">
+              <h2 class="text-uppercase"><i class="bi bi-piggy-bank"></i> Des tarifs inclusifs</h2>
+              <p class="lead">Chez Oddity, pas de tarif genré.<br />Nous avons fait le choix de baser nos prix sur la technique utilisée et le temps passé, pour être au plus juste et respecter chaque personne, quel que soit son genre ou son style.</p>
+            </div>
+          </div>
         </div>
       </section>
       <section class="py-5">
@@ -67,7 +79,26 @@
       <section class="bg-light text-dark py-5">
         <div class="container py-5">
           <h2 class="text-uppercase"><i class="bi bi-postage-heart"></i> Nous exposons des artistes</h2>
-          <p class="lead">Oddity, c’est aussi un espace vivant où l’on met en avant des artistes.<br />Pour notre première expo, nous avons le plaisir d’accueillir Birdy Art, une artiste peintre albigeoise dont les œuvres dégagent une énergie forte, mêlant couleurs vives et expression libre.</p>
+          <p class="lead">Oddity, c’est aussi un espace vivant où l’on met en avant des artistes.</p>
+          <div class="row gy-4">
+            <div class="col-sm-6">
+              <img src="./assets/images/artist/d7f7225a-86ef-4582-a857-84f4dccbb2c7.JPG" class="img-fluid" alt="">
+            </div>
+            <div class="col-sm-6">
+              <p class="lead">Pour notre première expo, nous avons le plaisir d’accueillir Birdy Art, une artiste peintre albigeoise dont les œuvres dégagent une énergie forte, mêlant couleurs vives et expression libre.</p>
+              <div class="row gy-4">
+                <div class="col-sm-12">
+                  <img src="./assets/images/artist/72f2f08b-8a45-4b8a-b9d3-7f31b70386b2.JPG" class="col-sm img-fluid frame" alt="">
+                </div>
+                <div class="col-sm-5">
+                  <img src="./assets/images/artist/6267af8d-84c1-407c-8f28-5555afd7a06c.JPG" class="col-sm img-fluid frame" alt="">
+                </div>
+                <div class="col-sm-7">
+                  <img src="./assets/images/artist/ecc76a6a-028b-4291-be66-1c4ac3324a75.JPG" class="col-sm img-fluid frame" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section class="py-5 min-vh-100">
@@ -79,16 +110,16 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     <script>
-      fetch('/carousel.json')
+      fetch('./carousel.json')
         .then(response => response.json())
         .then(items => {
           items.forEach((filename, index) => {
             const img = new Image();
-            img.src = `/assets/images/carousel/${filename}`;
+            img.src = `./assets/images/carousel/${filename}`;
             const div = document.createElement('div');
             if(index === 0) div.classList.add('active');
             div.classList.add('carousel-item', 'vh-100');
-            div.style.backgroundImage = `url('/assets/images/carousel/${filename}')`;
+            div.style.backgroundImage = `url('./assets/images/carousel/${filename}')`;
             document.querySelector('.carousel-inner').appendChild(div);
           });
         })
