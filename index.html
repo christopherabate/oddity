@@ -38,7 +38,7 @@
         border: 1rem solid black;
         padding: 5%;
         box-shadow: 0px 10px 13px -7px black, 5px 5px 15px 5px transparent;
-        -webkit-box-shadow: 0px 10px 13px -7px black, 5px 5px 15px 5px transparent); 
+        -webkit-box-shadow: 0px 10px 13px -7px black, 5px 5px 15px 5px transparent;
       }
     </style>
   </head>
@@ -86,44 +86,55 @@
             </div>
             <div class="col-sm-6">
               <p class="lead">Pour notre première expo, nous avons le plaisir d’accueillir Birdy Art, une artiste peintre albigeoise dont les œuvres dégagent une énergie forte, mêlant couleurs vives et expression libre.</p>
-              <div class="row gy-4">
-                <div class="col-sm-12">
-                  <img src="./assets/images/artist/72f2f08b-8a45-4b8a-b9d3-7f31b70386b2.JPG" class="col-sm img-fluid frame" alt="">
-                </div>
-                <div class="col-sm-5">
-                  <img src="./assets/images/artist/6267af8d-84c1-407c-8f28-5555afd7a06c.JPG" class="col-sm img-fluid frame" alt="">
-                </div>
-                <div class="col-sm-7">
-                  <img src="./assets/images/artist/ecc76a6a-028b-4291-be66-1c4ac3324a75.JPG" class="col-sm img-fluid frame" alt="">
-                </div>
-              </div>
+              <img src="./assets/images/artist/72f2f08b-8a45-4b8a-b9d3-7f31b70386b2.JPG" class="img-fluid frame mt-3" alt="">
             </div>
           </div>
         </div>
       </section>
-      <section class="py-5 min-vh-100">
+      <section class="py-5">
         <div class="container py-5">
           <h2 class="text-uppercase"><i class="bi bi-geo-alt"></i> Contact</h2>
-          <p class="lead">Contact MAIL INSTA ADRESSE MAP</p>
+          <div class="row gy-4">
+            <div class="col-sm-6">
+              <p class="lead">insta mail</p>
+            </div>
+            <div class="col-sm-6">
+              <p class="lead">adresse MAP</p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
+    <footer class="container py-5 text-center">
+      <ul class="list-inline text-secondary">
+        <li class="list-inline-item"><a href="#">footer</a></li>
+        <li class="list-inline-item"><a href="#">footer</a></li>
+        <li class="list-inline-item"><a href="#">footer</a></li>
+      </ul>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     <script>
-      fetch('./carousel.json')
-        .then(response => response.json())
-        .then(items => {
-          items.forEach((filename, index) => {
-            const img = new Image();
-            img.src = `./assets/images/carousel/${filename}`;
-            const div = document.createElement('div');
-            if(index === 0) div.classList.add('active');
-            div.classList.add('carousel-item', 'vh-100');
-            div.style.backgroundImage = `url('./assets/images/carousel/${filename}')`;
-            document.querySelector('.carousel-inner').appendChild(div);
-          });
-        })
-        .catch(console.error);
+      window.addEventListener('load', () => {
+        const colors = ['black', 'goldenrod', 'lightgrey'];
+        document.querySelectorAll('.frame').forEach(frame => {
+          frame.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
+        });
+        
+        fetch('./carousel.json')
+          .then(response => response.json())
+          .then(items => {
+            items.forEach((filename, index) => {
+              const img = new Image();
+              img.src = `./assets/images/carousel/${filename}`;
+              const div = document.createElement('div');
+              if(index === 0) div.classList.add('active');
+              div.classList.add('carousel-item', 'vh-100');
+              div.style.backgroundImage = `url('./assets/images/carousel/${filename}')`;
+              document.querySelector('.carousel-inner').appendChild(div);
+            });
+          })
+          .catch(console.error);
+      });
     </script>
   </body>
 </html>
