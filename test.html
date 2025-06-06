@@ -55,7 +55,7 @@
             event.preventDefault();
             event.stopPropagation();
             contact.querySelector("button[type='submit']").disabled = true;
-            contact.querySelector("button[type='submit'] .spinner-border").display = "inline";
+            contact.querySelector("button[type='submit'] .spinner-border").style.display = "inline-block";
             fetch(post, { method: 'POST', body: new FormData(contact)})
               .then(response => {
                 console.log(response.json());
@@ -63,7 +63,7 @@
               })
               .catch(console.error)
               .finally(() => {
-                contact.querySelector("button[type='submit'] .spinner-border").display = "none";
+                contact.querySelector("button[type='submit'] .spinner-border").style.display = "none";
                 contact.querySelector("button[type='submit']").disabled = false;
                 //contact.reset();
               });
