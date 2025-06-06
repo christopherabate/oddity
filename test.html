@@ -54,7 +54,7 @@
             fetch(post, { method: 'POST', body: new FormData(contact)})
               .then(response => {
                 console.log(response.json());
-                contact.classList.add('validated');
+                contact.classList.add('was-validated');
                 contact.querySelector("button[type='submit']").disabled = true;
                 //contact.reset();
               })
