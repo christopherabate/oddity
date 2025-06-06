@@ -37,6 +37,8 @@
           </div>
           <div class="col-auto">
             <button class="btn btn-primary" type="submit">Ok</button>
+            <div class="valid-feedback">Merci !</div>
+            <div class="invalid-feedback">Merci de saisir une adresse email valide</div>
           </div>
         </form>
       </section>
@@ -49,8 +51,12 @@
           contact.addEventListener('submit', event => {
             event.preventDefault();
             fetch(post, { method: 'POST', body: new FormData(contact)})
-              .then(response => console.log(response.json()))
-              .catch(console.error);
+              .then(response => {
+                console.log(response.json());
+                contact.querySelector(".valid-feedback").show();
+                contact.reset();
+              })
+              .catch(console.error,contact.querySelector(".invalid-feedback").show());
           });
         });
       });
