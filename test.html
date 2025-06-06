@@ -30,9 +30,7 @@
         <p class="lead">Un salon inclusif, sans tarifs genrés, où chaque coupe est une expression de soi.</p>
         <p class="lead">Envie d’être prévenu·e de l’ouverture et des offres de lancement ?<br />
         Écrivez-nous à <a href="mailto:oddity.coiffure@gmail.com" class="link-light">oddity.coiffure@gmail.com</a></p>
-                
-
-        <form class="row g-2 justify-content-center" method="POST" action="https://script.google.com/macros/s/AKfycbySV3pKaH138PC9ahxikgo5cEAxSMYVPEj5KPDvdd2iUn6Im_qbv9dSGX_HYKpxHBP9zA/exec">
+        <form class="contact row g-2 justify-content-center">
           <div class="col-auto">
             <input type="email" class="form-control" name="email" id="email" placeholder="email@exemple.com" aria-label="Adresse email" required>
             <input type="hidden" name="origine" id="origine" value="carte de visite" required>
@@ -41,11 +39,21 @@
             <button class="btn btn-primary" type="submit">Ok</button>
           </div>
         </form>
-
-
       </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script>
+      window.addEventListener('load', () => {
+        const post = "https://script.google.com/macros/s/AKfycbySV3pKaH138PC9ahxikgo5cEAxSMYVPEj5KPDvdd2iUn6Im_qbv9dSGX_HYKpxHBP9zA/exec";
+        document.querySelectorAll('.contact').forEach(contact => {
+          contact.addEventListener('submit', event => {
+            event.preventDefault();
+            fetch(post, { method: 'POST', body: new FormData(contact)})
+              .then(response => console.log(response.json()))
+              .catch(console.error);
+          });
+        });
+      });
     </script>
   </body>
 </html>
