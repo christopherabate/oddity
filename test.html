@@ -38,7 +38,7 @@
           <div class="col-auto">
             <button class="btn btn-secondary" type="submit">
               <span class="spinner-border spinner-border-sm d-none" aria-hidden="true"></span>
-              Ok
+              <span class="text">Prévenez-moi</span>
             </button>
           </div>
         </form>
@@ -54,6 +54,7 @@
             event.stopPropagation();
             contact.querySelector("button[type='submit']").disabled = true;
             contact.querySelector("button[type='submit'] .spinner-border").classList.toggle("d-none", false);
+            contact.querySelector("button[type='submit'] .text").classList.toggle("d-none", true);
             fetch(post, { method: 'POST', body: new FormData(contact)})
               .then(response => {
                 console.log(response.json());
@@ -62,6 +63,7 @@
               .finally(() => {
                 contact.querySelector(".feedback").classList.toggle("d-none", false);
                 contact.querySelector("button[type='submit'] .spinner-border").classList.toggle("d-none", true);
+                contact.querySelector("button[type='submit'] .text").classList.toggle("d-none", false);
                 contact.querySelector("button[type='submit']").disabled = false;
                 contact.reset();
               });
