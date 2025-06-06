@@ -50,12 +50,13 @@
         document.querySelectorAll('.contact').forEach(contact => {
           contact.addEventListener('submit', event => {
             event.preventDefault();
+            event.stopPropagation();
             fetch(post, { method: 'POST', body: new FormData(contact)})
               .then(response => {
                 console.log(response.json());
-                contact.classList.add('was-validated');
-                contact.querySelector('button').disable;
-                contact.reset();
+                contact.classList.add('validated');
+                contact.querySelector("button[type='submit']").disabled = true;
+                //contact.reset();
               })
               .catch(console.error);
           });
