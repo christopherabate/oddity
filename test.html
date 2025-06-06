@@ -28,10 +28,9 @@
         <img src="oddity.svg" class="my-5 w-50" />
         <h1 class="text-uppercase mb-3">Bientôt ouvert !</h1>
         <p class="lead">Un salon inclusif, sans tarifs genrés, où chaque coupe est une expression de soi.</p>
-        <p class="lead">Envie d’être prévenu·e de l’ouverture et des offres de lancement ?<br />
-        Écrivez-nous à <a href="mailto:oddity.coiffure@gmail.com" class="link-light">oddity.coiffure@gmail.com</a></p>
+        <p class="lead">Envie d’être prévenu·e de l’ouverture et des offres de lancement ?</p>
         <form class="contact row g-2 justify-content-center">
-          <div class="invalid-feedback">Merci de saisir une adresse email valide</div>
+          <div class="feedback">Merci et à très bentôt !</div>
           <div class="col-auto">
             <input type="email" class="form-control" name="email" id="email" placeholder="email@exemple.com" aria-label="Adresse email" autocomplete="on" required>
             <input type="hidden" name="origine" id="origine" value="carte de visite" required>
@@ -42,7 +41,6 @@
               Ok
             </button>
           </div>
-          <div class="valid-feedback">Merci !</div>
         </form>
       </section>
     </main>
@@ -62,6 +60,7 @@
               })
               .catch(console.error)
               .finally(() => {
+                contact.querySelector(".feedback").classList.toggle("d-none", false);
                 contact.querySelector("button[type='submit'] .spinner-border").classList.toggle("d-none", true);
                 contact.querySelector("button[type='submit']").disabled = false;
                 contact.reset();
