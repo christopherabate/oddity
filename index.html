@@ -83,6 +83,8 @@
       <section class="py-3">
         <div class="container py-3">
           <h2 class="text-uppercase mb-3"><i class="bi bi-instagram"></i> Instagram</h2>
+          <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+          <iframe src="//lightwidget.com/widgets/8220dda5fd8a5c588366abefec829734.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
         </div>
       </section>
       <section class="bg-light text-dark py-3">
@@ -134,7 +136,7 @@
     <script>
       window.addEventListener('load', () => {
         const colors = ['black', 'goldenrod', 'lightgrey'];
-        document.querySelectorAll('.frame').forEach(frame => {
+        document.querySelectorAll('.frame, .lightwidget__tile').forEach(frame => {
           frame.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
         });
 
