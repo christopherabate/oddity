@@ -136,11 +136,6 @@
     <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/polyfills.latest.js"></script>
     <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/app.latest.js"></script>
     <script>
-      window.addEventListener('load', () => {
-        const colors = ['black', 'goldenrod', 'lightgrey'];
-        document.querySelectorAll('.frame, .lightwidget__tile').forEach(frame => {
-          frame.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
-        });
         
         window.planity = {
           key: '-OEDkhL2LQoCvULzF6dq',
@@ -153,6 +148,11 @@
           // giftVoucherContainer: container,
           // onlineShopContainer: container
         };
+      window.addEventListener('load', () => {
+        const colors = ['black', 'goldenrod', 'lightgrey'];
+        document.querySelectorAll('.frame, .lightwidget__tile').forEach(frame => {
+          frame.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
+        });
 
         var map = L.map('map').setView([43.4642036, 1.3258657], 17);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
