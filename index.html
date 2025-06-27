@@ -11,7 +11,6 @@
       html, body {
         height: 100vh;
         scroll-behavior: smooth;
-        scroll-snap-type: y proximity;
       }
       body {
         --bs-body-color: #f4f1ec;
@@ -20,9 +19,6 @@
         --bs-light-rgb: 244, 241, 236;
         --bs-body-bg: #0a1215;
         --bs-body-bg-rgb: 10, 18, 21;
-      }
-      section {
-        scroll-snap-align: start end;
       }
       #mask {
         mask: url('./assets/images/mask-sm.svg') center/cover no-repeat;
@@ -53,9 +49,17 @@
         <h1 class="visually-hidden">Oddity - Salon atypique pour esprits libres</h1>
         <div aria-hidden="true" class="carousel-inner"></div>
       </section>
-      <section class="bg-light text-dark py-3">
+      <section class="bg-light text-dark py-3" id="RDV">
         <div class="container py-3">
           <h2 class="text-uppercase mb-3"><i class="bi bi-calendar-check"></i> Prendre RDV</h2>
+          <script>
+            window.planity = {
+              key: '-OEDkhL2LQoCvULzF6dq',
+              primaryColor: '#f4f1ec',
+            };
+          </script>
+          <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/polyfills.latest.js"></script>
+          <script src="https://d2skjte8udjqxw.cloudfront.net/widget/production/2/app.latest.js"></script>
         </div>
       </section>
       <section class="py-3">
@@ -65,7 +69,7 @@
           <p class="lead">Chez nous, l’ambiance est rock, l’énergie est libre, et on casse les codes avec plaisir.</p>
           <div class="row gy-3 d-flex align-items-center">
             <div class="col-sm-8">
-              <img src="https://placehold.co/600x400?text=salon" class="img-fluid frame" alt="">
+              <img src="./assets/images/salon/salon.jpg" class="img-fluid frame" alt="">
             </div>
             <div class="col-sm-4">
               <img src="./assets/images/salon/IMG_2804.JPG" class="img-fluid rounded" alt="">
@@ -80,12 +84,12 @@
           <p class="lead">Nous avons fait le choix de baser nos prix sur la technique utilisée et le temps passé, pour être au plus juste et respecter chaque personne, quel que soit son genre ou son style.</p>
         </div>
       </section>
-      <section class="py-3">
+      <!--<section class="py-3">
         <div class="container py-3">
           <h2 class="text-uppercase mb-3"><i class="bi bi-instagram"></i> Instagram</h2>
           <script type="text/javascript" src="https://www.juicer.io/embed/oddity_coiffure/embed-code.js" async defer></script>
         </div>
-      </section>
+      </section>-->
       <section class="bg-light text-dark py-3">
         <div class="container py-3">
           <h2 class="text-uppercase mb-3"><i class="bi bi-postage-heart"></i> Nous exposons des artistes</h2>
@@ -112,6 +116,7 @@
                 31600 MURET
               </address>
               <address class="lead">
+                <i class="bi bi-telephone"></i> <a href="tel:+33534461661" class="link-light">05 34 46 16 61</a><br />
                 <i class="bi bi-instagram"></i> <a href="https://www.instagram.com/oddity_coiffure/" class="link-light">oddity_coiffure</a><br />
                 <i class="bi bi-envelope-at"></i> <a href="mailto:oddity.coiffure@gmail.com" class="link-light">oddity.coiffure@gmail.com</a>
               </address>
