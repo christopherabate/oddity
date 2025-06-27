@@ -57,19 +57,6 @@
         <div class="container py-3">
           <h2 class="text-uppercase mb-3"><i class="bi bi-calendar-check"></i> Prendre RDV</h2>
           <div id="planity"></div>
-          <script>
-              var container = document.getElementById('planity');
-              window.planity = {
-                  key: '-OEDkhL2LQoCvULzF6dq',
-                  primaryColor: '#f4f1ec',
-                  // choisissez une des options ci-dessous
-                  // container: container,
-                  // accountContainer: container,
-                  appointmentContainer: container,
-                  // giftVoucherContainer: container,
-                  // onlineShopContainer: container
-              };
-          </script>
         </div>
       </section>
       <section class="py-3">
@@ -154,6 +141,18 @@
         document.querySelectorAll('.frame, .lightwidget__tile').forEach(frame => {
           frame.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
         });
+        
+        var container = document.getElementById('planity');
+        window.planity = {
+          key: '-OEDkhL2LQoCvULzF6dq',
+          primaryColor: '#f4f1ec',
+          // choisissez une des options ci-dessous
+          // container: container,
+          // accountContainer: container,
+          appointmentContainer: container,
+          // giftVoucherContainer: container,
+          // onlineShopContainer: container
+        };
 
         var map = L.map('map').setView([43.4642036, 1.3258657], 17);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
