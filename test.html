@@ -11,7 +11,6 @@
       html, body {
         height: 100vh;
         scroll-behavior: smooth;
-        scroll-snap-type: y proximity;
       }
       body {
         --bs-body-color: #f4f1ec;
@@ -20,9 +19,6 @@
         --bs-light-rgb: 244, 241, 236;
         --bs-body-bg: #0a1215;
         --bs-body-bg-rgb: 10, 18, 21;
-      }
-      section {
-        scroll-snap-align: start end;
       }
       #mask {
         mask: url('./assets/images/mask-sm.svg') center/cover no-repeat;
@@ -74,7 +70,7 @@
               onServiceAdd: function(){
                 // Une fonction qui réagira au choix de l'utilisateur
                 // par exemple :  
-                window.scroll(0, 0); 
+                //window.scroll(0, 0); 
                 // Ici l'écran sera ramener en haut de la page lorsqu'un utilisateur 
                 // choisiera une prestation
                 }
