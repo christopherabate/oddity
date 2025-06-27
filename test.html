@@ -6,6 +6,7 @@
     <title>Oddity Coiffure - Muret</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous"/>
     <style>
       html, body {
         height: 100vh;
@@ -20,19 +21,147 @@
         --bs-body-bg: #0a1215;
         --bs-body-bg-rgb: 10, 18, 21;
       }
+      section {
+        scroll-snap-align: start end;
+      }
+      #mask {
+        mask: url('./assets/images/mask-sm.svg') center/cover no-repeat;
+        -webkit-mask: url('./assets/images/mask-sm.svg') center/cover no-repeat;
+      }
+      @media (min-width: 576px) {
+        #mask {
+          mask: url('./assets/images/mask.svg') center/cover no-repeat;
+          -webkit-mask: url('./assets/images/mask.svg') center/cover no-repeat;
+        }
+      }
+      #mask .carousel-item {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .frame, .lightwidget__tile {
+        border: 1rem solid black;
+        padding: 5%;
+        box-shadow: 0px 10px 13px -7px black, 5px 5px 15px 5px transparent;
+        -webkit-box-shadow: 0px 10px 13px -7px black, 5px 5px 15px 5px transparent;
+      }
     </style>
   </head>
   <body>
     <main role="main">
-      <section class="container py-5 text-center">
-        <img src="oddity.svg" class="my-5 w-50" />
-        <h1 class="text-uppercase mb-3">Bientôt ouvert !</h1>
-        <p class="lead">Un salon inclusif, sans tarifs genrés, où chaque coupe est une expression de soi.</p>
-        <p class="lead">Envie d’être prévenu·e de l’ouverture et des offres de lancement ?<br />
-        Écrivez-nous à <a href="mailto:oddity.coiffure@gmail.com" class="link-light">oddity.coiffure@gmail.com</a></p>
+      <section id="mask" class="carousel slide vh-100" data-bs-ride="carousel" data-bs-pause="false">
+        <h1 class="visually-hidden">Oddity - Salon atypique pour esprits libres</h1>
+        <div aria-hidden="true" class="carousel-inner"></div>
+      </section>
+      <section class="bg-light text-dark py-3">
+        <div class="container py-3">
+          <h2 class="text-uppercase mb-3"><i class="bi bi-calendar-check"></i> Prendre RDV</h2>
+        </div>
+      </section>
+      <section class="py-3">
+        <div class="container py-3">
+          <h2 class="text-uppercase mb-3"><i class="bi bi-quote"></i> Un salon rock, une identité forte, une expérience unique</h2>
+          <p class="lead">Je m’appelle Laurie et j’ai créé Oddity pour en faire un salon qui me ressemble : un lieu où chacun·e peut exprimer sa personnalité, sans étiquettes ni clichés.</p>
+          <p class="lead">Chez nous, l’ambiance est rock, l’énergie est libre, et on casse les codes avec plaisir.</p>
+          <div class="row gy-3 d-flex align-items-center">
+            <div class="col-sm-8">
+              <img src="https://placehold.co/600x400?text=salon" class="img-fluid frame" alt="">
+            </div>
+            <div class="col-sm-4">
+              <img src="./assets/images/salon/IMG_2804.JPG" class="img-fluid rounded" alt="">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="bg-light text-dark py-3">
+        <div class="container py-3">
+          <h2 class="text-uppercase mb-3"><i class="bi bi-piggy-bank"></i> Des tarifs inclusifs</h2>
+          <p class="lead">Chez Oddity, pas de tarif genré.</p>
+          <p class="lead">Nous avons fait le choix de baser nos prix sur la technique utilisée et le temps passé, pour être au plus juste et respecter chaque personne, quel que soit son genre ou son style.</p>
+        </div>
+      </section>
+      <!--<section class="py-3">
+        <div class="container py-3">
+          <h2 class="text-uppercase mb-3"><i class="bi bi-instagram"></i> Instagram</h2>
+          <script type="text/javascript" src="https://www.juicer.io/embed/oddity_coiffure/embed-code.js" async defer></script>
+        </div>
+      </section>-->
+      <section class="bg-light text-dark py-3">
+        <div class="container py-3">
+          <h2 class="text-uppercase mb-3"><i class="bi bi-postage-heart"></i> Nous exposons des artistes</h2>
+          <p class="lead">Oddity, c’est aussi un espace vivant où l’on met en avant des artistes.</p>
+          <p class="lead">Pour notre première expo, nous avons le plaisir d’accueillir Birdy Art, une artiste peintre albigeoise dont les œuvres dégagent une énergie forte, mêlant couleurs vives et expression libre.</p>
+          <div class="row gy-3 d-flex align-items-center">
+            <div class="col-sm-4">
+              <img src="./assets/images/artist/d7f7225a-86ef-4582-a857-84f4dccbb2c7.JPG" class="img-fluid rounded" alt="">
+            </div>
+            <div class="col-sm-8">
+              <img src="./assets/images/artist/72f2f08b-8a45-4b8a-b9d3-7f31b70386b2.JPG" class="img-fluid frame" alt="">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-3">
+        <div class="container py-3">
+          <h2 class="text-uppercase mb-3"><i class="bi bi-geo-alt"></i> Contact</h2>
+          <div class="row gy-3 d-flex align-items-center">
+            <div class="col-sm-6">
+              <address class="lead">
+                <strong>Oddity coiffure</strong><br />
+                59 Avenue Jaques Douzans<br />
+                31600 MURET
+              </address>
+              <address class="lead">
+                <i class="bi bi-instagram"></i> <a href="https://www.instagram.com/oddity_coiffure/" class="link-light">oddity_coiffure</a><br />
+                <i class="bi bi-envelope-at"></i> <a href="mailto:oddity.coiffure@gmail.com" class="link-light">oddity.coiffure@gmail.com</a>
+              </address>
+            </div>
+            <div class="col-sm-6">
+              <div id="map" style="height: 320px"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="container py-2 text-center">
+        <ul class="list-inline text-secondary pt-3 border-top border-secondary">
+          <li class="list-inline-item"><a href="#" class="link-light">Mentions légales</a></li>
+          <li class="list-inline-item"><a href="#" class="link-light">Accessibilité : Totalement conforme</a></li>
+          <li class="list-inline-item">&copy; 2025 Oddity</li>
+        </ul>
       </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+    <script>
+      window.addEventListener('load', () => {
+        const colors = ['black', 'goldenrod', 'lightgrey'];
+        document.querySelectorAll('.frame, .lightwidget__tile').forEach(frame => {
+          frame.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
+        });
+
+        var map = L.map('map').setView([43.4642036, 1.3258657], 17);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        L.marker([43.4642036, 1.3258657]).addTo(map)
+          .bindPopup("Oddity coiffure")
+          .openPopup();
+        
+        fetch('./carousel.json')
+          .then(response => response.json())
+          .then(items => {
+            items.forEach((filename, index) => {
+              const img = new Image();
+              img.src = `./assets/images/carousel/${filename}`;
+              const div = document.createElement('div');
+              if(index === 0) div.classList.add('active');
+              div.classList.add('carousel-item', 'vh-100');
+              div.style.backgroundImage = `url('./assets/images/carousel/${filename}')`;
+              document.querySelector('.carousel-inner').appendChild(div);
+            });
+          })
+          .catch(console.error);
+      });
     </script>
   </body>
 </html>
